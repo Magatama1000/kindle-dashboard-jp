@@ -5,8 +5,8 @@ import * as lucideIcons from 'lucide-static';
 import fs from 'fs';
 import { chromium } from 'playwright';
 
-const DASHBOARD_WIDTH = 1448;
-const DASHBOARD_HEIGHT = 1072;
+const DASHBOARD_WIDTH = 1024;
+const DASHBOARD_HEIGHT = 758;
 const PORT = 8080; // Different from the other weather server
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 const WEATHER_LOCATION = {
@@ -90,10 +90,10 @@ function formatDateTime() {
 }
 
 function getBatteryIcon(percentage: number): string {
-    if (percentage < 2) return getIconSvg('44', 48);      // Battery EMPTY
-    if (percentage < 10) return getIconSvg('47', 48);     // Battery LOW
-    if (percentage > 90) return getIconSvg('46', 48);     // Battery FULL
-    return getIconSvg('45', 48);                          // Battery MEDIUM
+    if (percentage < 2) return getIconSvg('44', 34);      // Battery EMPTY
+    if (percentage < 10) return getIconSvg('47', 34);     // Battery LOW
+    if (percentage > 90) return getIconSvg('46', 34);     // Battery FULL
+    return getIconSvg('45', 34);                          // Battery MEDIUM
 }
 
 async function fetchWeatherData() {
@@ -176,7 +176,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
         }
         const weatherData0 = weatherData[0];
         const observation = weatherData0.observation;
-        const currentIconSvg = getIconSvg(observation.iconCode, 100);
+        const currentIconSvg = getIconSvg(observation.iconCode, 71);
         const currentTemp = observation.temperature.metric;
         const currentCondition = observation.condition;
 
@@ -205,7 +205,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
             const hourlyCount = alertHtml === '' ? 10 : 9;
             const next6Hours = weatherData0.hourlyFcst.hourly.slice(0, hourlyCount);
             hourlyHtml = next6Hours.map((hour: any) => {
-                const iconSvg = getIconSvg(hour.iconCode, 48);
+                const iconSvg = getIconSvg(hour.iconCode, 34);
                 const conditionLength = hour.condition.length;
                 const conditionClass = conditionLength > 20 ? 'hourly-condition long-text' :
                     conditionLength > 15 ? 'hourly-condition medium-text' :
@@ -256,7 +256,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
                     // Create a day column (even if empty for night-only forecasts)
                     rowHtml += '<div class="temp-group">';
                     if (forecast.day) {
-                        const dayIcon = getIconSvg(forecast.day.iconCode, 48);
+                        const dayIcon = getIconSvg(forecast.day.iconCode, 34);
                         const summaryLength = forecast.day.summary.length;
                         const conditionClass = summaryLength > 20 ? 'daily-condition long-text' : 'daily-condition';
                         rowHtml += `
@@ -273,7 +273,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
                     // Create a night column
                     rowHtml += '<div class="temp-group">';
                     if (forecast.night) {
-                        const nightIcon = getIconSvg(forecast.night.iconCode, 48);
+                        const nightIcon = getIconSvg(forecast.night.iconCode, 34);
                         const summaryLength = forecast.night.summary.length;
                         const conditionClass = summaryLength > 18 ? 'daily-condition extra-long-text' :
                             summaryLength > 9 ? 'daily-condition long-text' :
@@ -304,9 +304,9 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --dashboard-width: 1448px;
-      --dashboard-height: 1072px;
-      --aspect-ratio: calc(1072 / 1448);
+      --dashboard-width: 1024px;
+      --dashboard-height: 758px;
+      --aspect-ratio: calc(758 / 1024);
       
       /* Color variables */
       --text-primary: #000000;    /* For the most important information */
@@ -332,7 +332,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     .container {
       width: var(--dashboard-width);
       height: var(--dashboard-height);
-      aspect-ratio: calc(1448 / 1072);
+      aspect-ratio: calc(1024 / 758);
       display: flex;
       background: #fff;
       max-width: 100vw;
@@ -342,7 +342,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     
     .column {
       flex: 1;
-      padding: 20px;
+      padding: 14px;
       background: #fff;
       box-sizing: border-box;
       overflow: hidden;
@@ -351,33 +351,33 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
     
     #left-column {
-      border-right: 3px solid #ccc;
+      border-right: 2.1px solid #ccc;
     }
     
     .section {
-      margin-bottom: 12px;
+      margin-bottom: 8.5px;
       flex-shrink: 0;
     }
     
     .alert {
       border: 1px solid red;
-      padding: 8px;
+      padding: 5.7px;
       background: #ffe6e6;
-      margin-bottom: 8px;
-      font-size: min(39px, 2.9vw);
+      margin-bottom: 5.7px;
+      font-size: min(28px, 2.9vw);
       font-weight: bold;
     }
     
     .hourly-item, .daily-item {
       display: flex;
       align-items: center;
-      margin-bottom: 16px;
-      gap: 8px;
+      margin-bottom: 11px;
+      gap: 5.7px;
     }
     
     .hourly-time, .daily-date {
       flex: 1;
-      font-size: min(45px, 3.2vw);
+      font-size: min(32px, 3.2vw);
       font-weight: bold;
     }
     
@@ -387,107 +387,107 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     
     .hourly-temp, .daily-temp {
       flex: 0.8;
-      font-size: min(45px, 3.2vw);
+      font-size: min(32px, 3.2vw);
       font-weight: bold;
     }
     
     .hourly-condition {
       flex: 2.5;
-      font-size: min(45px, 3.2vw);
+      font-size: min(32px, 3.2vw);
       font-weight: bold;
       color: var(--text-secondary);
       text-align: center;
     }
     
     .hourly-condition.medium-text {
-      font-size: min(39px, 2.9vw);
+      font-size: min(28px, 2.9vw);
     }
     
     .hourly-condition.long-text {
-      font-size: min(33px, 2.4vw);
+      font-size: min(23px, 2.4vw);
     }
     
     h2 {
-      font-size: min(51px, 3.4vw);
-      margin: 8px 0;
+      font-size: min(36px, 3.4vw);
+      margin: 5.7px 0;
       font-weight: bold;
     }
     
     .icon {
       display: inline-block;
-      margin-right: 8px;
+      margin-right: 5.7px;
     }
     
     .current-temp {
-      font-size: min(101px, 7.2vw);
+      font-size: min(72px, 7.2vw);
       font-weight: bold;
       color: var(--text-primary);
     }
     
     .current-condition, .aqhi-status {
-      font-size: min(51px, 3.4vw);
+      font-size: min(36px, 3.4vw);
       font-weight: bold;
-      margin: 4px 0;
+      margin: 2.8px 0;
       color: var(--text-secondary);
     }
     
     .daily-forecast-group {
-        margin-bottom: 24px;
+        margin-bottom: 17px;
     }
 
     .daily-item {
         display: flex;
         align-items: flex-start;
-        gap: 16px;
-        margin-top: 14px;
-        margin-bottom: 14px;
-        padding-left: 20px;
+        gap: 11px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 14px;
     }
 
     .daily-header {
-        font-size: min(51px, 3.4vw);
+        font-size: min(36px, 3.4vw);
         font-weight: 900;
-        min-width: 180px;
-        width: 180px;
-        padding-top: 8px;
+        min-width: 128px;
+        width: 128px;
+        padding-top: 5.7px;
         text-align: left;
         color: var(--text-primary);
     }
 
     .temp-group {
         flex: 1;
-        min-width: 240px;
+        min-width: 170px;
         text-align: left;
     }
     
     .temp-row {
         display: flex;
         justify-content: flex-start;
-        gap: 8px;
-        width: 160px;
+        gap: 5.7px;
+        width: 114px;
     }
     
     .daily-icon {
       display: flex;
       justify-content: left;
       align-items: left;
-      width: 48px;
+      width: 34px;
     }
     
     .daily-temp {
-      font-size: min(51px, 3.4vw);
+      font-size: min(36px, 3.4vw);
       font-weight: 900;
       white-space: nowrap;
-      width: 100px;
+      width: 71px;
       text-align: left;
       color: var(--text-primary);
     }
     
     .daily-condition {
-        font-size: min(45px, 3.2vw);
+        font-size: min(32px, 3.2vw);
         font-weight: 900;
         white-space: normal;
-        max-width: 280px;
+        max-width: 199px;
         line-height: 1.3;
         text-align: left;
         display: -webkit-box;
@@ -498,29 +498,29 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
 
     .daily-condition.long-text {
-        font-size: min(39px, 2.9vw);
+        font-size: min(28px, 2.9vw);
     }
 
     .daily-condition.extra-long-text {
-        font-size: min(33px, 2.4vw);
+        font-size: min(23px, 2.4vw);
     }
     
     .header-status {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: min(51px, 3.4vw);
+      font-size: min(36px, 3.4vw);
       font-weight: bold;
-      margin-bottom: 12px;
-      gap: 16px;
+      margin-bottom: 8.5px;
+      gap: 11px;
     }
 
     .date-battery {
-      font-size: min(45px, 3.2vw);
+      font-size: min(32px, 3.2vw);
       color: var(--text-secondary);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 2.8px;
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -537,19 +537,19 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
 
     .current-time {
-      font-size: min(57px, 3.4vw);
+      font-size: min(41px, 3.4vw);
       font-weight: bold;
       color: var(--text-primary);
     }
     
-    @media (max-aspect-ratio: 1448/1072) {
+    @media (max-aspect-ratio: 1024/758) {
       .container {
         width: 100vw;
         height: calc(100vw * var(--aspect-ratio));
       }
     }
     
-    @media (min-aspect-ratio: 1448/1072) {
+    @media (min-aspect-ratio: 1024/758) {
       .container {
         height: 100vh;
         width: calc(100vh / var(--aspect-ratio));
@@ -569,9 +569,9 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
 
     .current-condition {
-        font-size: min(51px, 3.4vw);
+        font-size: min(36px, 3.4vw);
         font-weight: bold;
-        margin: 4px 0;
+        margin: 2.8px 0;
         color: var(--text-secondary);
         overflow: hidden;
         text-overflow: ellipsis;
@@ -581,36 +581,36 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     .current-condition > span {
         display: flex;
         align-items: center;
-        gap: 4px;
+        gap: 2.8px;
         flex: 1;
         justify-content: flex-start;
     }
 
     .current-condition.medium-text {
-        font-size: min(45px, 3vw);
+        font-size: min(32px, 3vw);
     }
 
     .current-condition.long-text {
-        font-size: min(30px, 2.6vw);
+        font-size: min(21px, 2.6vw);
     }
 
     .weather-details {
-        font-size: min(51px, 3.4vw);
+        font-size: min(36px, 3.4vw);
         font-weight: bold;
-        margin: 4px 0;
+        margin: 2.8px 0;
         color: var(--text-secondary);
         display: flex;
         justify-content: flex-start;
         width: 100%;
-        gap: 48px;
+        gap: 34px;
     }
 
     .weather-details > span {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 11px;
         justify-content: flex-start;
-        min-width: 180px;
+        min-width: 128px;
     }
 
     /* Add this new class */
