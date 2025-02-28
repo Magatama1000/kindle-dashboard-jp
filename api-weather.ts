@@ -301,7 +301,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@400&display=swap" rel="stylesheet">
   <style>
     :root {
       --dashboard-width: 1024px;
@@ -318,7 +318,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
     
     body {
-      font-family: 'Comic Neue', cursive;
+      font-family: "M PLUS 2", serif;
       margin: 0;
       background-color: #f0f0f0;
       width: 100vw;
@@ -364,7 +364,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
       padding: 5.7px;
       background: #ffe6e6;
       margin-bottom: 5.7px;
-      font-size: min(28px, 2.9vw);
+      font-size: min(22px, 2.3vw);
       font-weight: bold;
     }
     
@@ -377,7 +377,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     
     .hourly-time, .daily-date {
       flex: 1;
-      font-size: min(32px, 3.2vw);
+      font-size: min(26px, 2.6vw);
       font-weight: bold;
     }
     
@@ -387,28 +387,28 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     
     .hourly-temp, .daily-temp {
       flex: 0.8;
-      font-size: min(32px, 3.2vw);
+      font-size: min(26px, 2.6vw);
       font-weight: bold;
     }
     
     .hourly-condition {
       flex: 2.5;
-      font-size: min(32px, 3.2vw);
+      font-size: min(26px, 2.6vw);
       font-weight: bold;
       color: var(--text-secondary);
       text-align: center;
     }
     
     .hourly-condition.medium-text {
-      font-size: min(28px, 2.9vw);
+      font-size: min(22px, 2.3vw);
     }
     
     .hourly-condition.long-text {
-      font-size: min(23px, 2.4vw);
+      font-size: min(18px, 1.9vw);
     }
     
     h2 {
-      font-size: min(36px, 3.4vw);
+      font-size: min(29px, 2.7vw);
       margin: 5.7px 0;
       font-weight: bold;
     }
@@ -419,13 +419,13 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
     
     .current-temp {
-      font-size: min(72px, 7.2vw);
+      font-size: min(58px, 5.8vw);
       font-weight: bold;
       color: var(--text-primary);
     }
     
     .current-condition, .aqhi-status {
-      font-size: min(36px, 3.4vw);
+      font-size: min(29px, 2.7vw);
       font-weight: bold;
       margin: 2.8px 0;
       color: var(--text-secondary);
@@ -445,7 +445,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
 
     .daily-header {
-        font-size: min(36px, 3.4vw);
+        font-size: min(29px, 2.7vw);
         font-weight: 900;
         min-width: 128px;
         width: 128px;
@@ -475,7 +475,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
     
     .daily-temp {
-      font-size: min(36px, 3.4vw);
+      font-size: min(29px, 2.7vw);
       font-weight: 900;
       white-space: nowrap;
       width: 71px;
@@ -484,7 +484,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
     
     .daily-condition {
-        font-size: min(32px, 3.2vw);
+        font-size: min(26px, 2.6vw);
         font-weight: 900;
         white-space: normal;
         max-width: 199px;
@@ -498,25 +498,25 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
 
     .daily-condition.long-text {
-        font-size: min(28px, 2.9vw);
+        font-size: min(22px, 2.3vw);
     }
 
     .daily-condition.extra-long-text {
-        font-size: min(23px, 2.4vw);
+        font-size: min(18px, 1.9vw);
     }
     
     .header-status {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: min(36px, 3.4vw);
+      font-size: min(29px, 2.7vw);
       font-weight: bold;
       margin-bottom: 8.5px;
       gap: 11px;
     }
 
     .date-battery {
-      font-size: min(32px, 3.2vw);
+      font-size: min(26px, 2.6vw);
       color: var(--text-secondary);
       display: flex;
       align-items: center;
@@ -537,7 +537,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
 
     .current-time {
-      font-size: min(41px, 3.4vw);
+      font-size: min(33px, 2.7vw);
       font-weight: bold;
       color: var(--text-primary);
     }
@@ -569,7 +569,7 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
 
     .current-condition {
-        font-size: min(36px, 3.4vw);
+        font-size: min(29px, 2.7vw);
         font-weight: bold;
         margin: 2.8px 0;
         color: var(--text-secondary);
@@ -587,15 +587,15 @@ async function createWeatherImage(weatherData: any, batteryPercentage: number) {
     }
 
     .current-condition.medium-text {
-        font-size: min(32px, 3vw);
+        font-size: min(26px, 2.4vw);
     }
 
     .current-condition.long-text {
-        font-size: min(21px, 2.6vw);
+        font-size: min(17px, 2.1vw);
     }
 
     .weather-details {
-        font-size: min(36px, 3.4vw);
+        font-size: min(29px, 2.7vw);
         font-weight: bold;
         margin: 2.8px 0;
         color: var(--text-secondary);
