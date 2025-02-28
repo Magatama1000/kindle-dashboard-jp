@@ -6,7 +6,7 @@
 このサーバーは、次のブログ記事で紹介している Kindle ダッシュボード用に使用しています：
 [Reviving my Kindle PW7](https://terminalbytes.com/reviving-kindle-paperwhite-7th-gen/)
 
-![Kindle Weather Dashboard](public/dash.png)
+![Kindle Weather Dashboard](dash_sample.png)
 
 *👆 これは Kindle での表示例です！（Kindle 画面に合わせて90°回転しています）*
 
